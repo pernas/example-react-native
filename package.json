@@ -1,0 +1,24 @@
+{
+  "name": "ReactNativify",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "babel-plugin-rewrite-require": "1.9.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "bitcoinjs-lib": "^2.3.0",
+    "dream-wallet": "git+https://git@github.com/pernas/dream-wallet.git",
+    "node-libs-browser": "2.0.0",
+    "react": "15.4.2",
+    "react-native": "0.42.0-rc.1"
+  },
+  "babel": {
+  "presets": [
+    "es2015",
+    "stage-2"
+    ]
+  }
+}
