@@ -12,13 +12,17 @@
     "bitcoinjs-lib": "^2.3.0",
     "dream-wallet": "git+https://git@github.com/pernas/dream-wallet.git",
     "node-libs-browser": "2.0.0",
+    "ramda": "^0.23.0",
     "react": "15.4.2",
-    "react-native": "0.42.0-rc.1"
+    "react-native": "0.42.0-rc.1",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-saga": "^0.14.3"
   },
   "babel": {
-  "presets": [
-    "es2015",
-    "stage-2"
+    "presets": [
+      "es2015",
+      "stage-2"
     ]
   }
 }
