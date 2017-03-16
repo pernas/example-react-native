@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
-// import login from './login'
+import login from './login'
+import * as A from '../actions'
 // import { walletReducer, blockchainDataReducer } from 'dream-wallet/lib/reducers'
 const dreamWalletReducers = require('dream-wallet/src/reducers')
 import * as R from 'ramda'
@@ -14,6 +15,27 @@ const counter = (state = INIT, action) => {
   switch (type) {
     case 'COUNT_UP': {
       return state + 1
+    }
+    case 'COUNT_DOWN': {
+      return state - 1
+    }
+    default:
+      return state
+  }
+}
+
+const CREDENTIALS_INITIAL_STATE = {
+  guid: null,
+  sharedKey: null,
+  password: null,
+  xpub: null
+}
+
+const credentials = (state = CREDENTIALS_INITIAL_STATE, action) => {
+  let { type, payload } = action
+  switch (type) {
+    case A.PERSIST_CREDENTIALS: {
+      return payload
     }
     default:
       return state
@@ -53,7 +75,8 @@ const counter = (state = INIT, action) => {
 
 const reducers = ({wpath, dpath}) => combineReducers({
   counter: counter,
-  // panel: panel,
+  loginState: login,
+  credentials: credentials,
   [dpath]: dreamWalletReducers.blockchainDataReducer,
   [wpath]: dreamWalletReducers.walletReducer
 })

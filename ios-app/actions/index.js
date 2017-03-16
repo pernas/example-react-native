@@ -13,6 +13,7 @@ export const logout = () => ({ type: LOGGED_OUT })
 export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
+export const PERSIST_CREDENTIALS = 'PERSIST_CREDENTIALS'
 
 export const loginStart = credentials => ({ type: LOGIN_START, payload: credentials })
 export const loginSuccess = () => ({ type: LOGIN_SUCCESS })
@@ -27,3 +28,5 @@ export const switchPanel = panel => ({
   type: PANEL_SWITCH,
   payload: panel
 })
+
+export const persistCredentials = (payload) => ({ type: PERSIST_CREDENTIALS, payload })

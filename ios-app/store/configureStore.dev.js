@@ -13,6 +13,11 @@ import { rootSaga } from '../sagas'
 const network = require('dream-wallet/lib/network')
 import * as C from '../config'
 
+import {persistStore, autoRehydrate} from 'redux-persist'
+import {AsyncStorage} from 'react-native'
+// persistStore(store, {storage: AsyncStorage})
+
+import createEncryptor from 'redux-persist-transform-encrypt';
 
 const configureStore = () => {
   // const socket = new Socket()
@@ -31,14 +36,28 @@ const configureStore = () => {
         // walletSocketMiddleware({ socket }),
         sagaMiddleware
         // createLogger()
-      )
+      ),
+      autoRehydrate()
     )
   )
+
+  const encryptor = createEncryptor({
+    secretKey: 'my-super-secret-key'
+  });
+
+  persistStore(store,
+              { storage: AsyncStorage,
+                whitelist: ['credentials'],
+                transforms: [encryptor]
+              }
+              // , () => { console.warn('rehydration complete') }
+            // ).purge() // clean the stored state
+            )
 
   sagaMiddleware.run(rootSaga({ api: api
                               , wpath: C.WALLET_IMMUTABLE_PATH
                               , dpath: C.BLOCKCHAIN_DATA_PATH}))
-  // sagaMiddleware.run(helloSaga)
+
   return {
     ...store
     // runSaga: sagaMiddleware.run
