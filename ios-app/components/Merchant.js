@@ -11,7 +11,18 @@ import * as actions from '../actions'
 import * as C from '../config'
 import { connect } from 'react-redux'
 import QRCode from 'react-native-qrcode';
+import colors from './styles/colors'
+import appStyles from './styles/styles'
 
+let styles = StyleSheet.create({
+  qr: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.borderGray,
+    // flexDirection: 'row',
+    justifyContent: 'center'
+  }
+})
 
 class Merchant extends Component {
   constructor (props) {
@@ -21,14 +32,14 @@ class Merchant extends Component {
   render () {
     const msg = this.props.credentials.xpub ? this.props.credentials.xpub : ""
     return (
-      <View>
-        <Text> I AM THE MERCHANT COMPONENT </Text>
-        <Text> {this.props.credentials.xpub} </Text>
+      <View style={styles.qr}>
+        <Text> MERCHANT COMPONENT </Text>
+        {/* <Text> {this.props.credentials.xpub} </Text> */}
         {/* <QRCode value='hola' /> */}
         <QRCode
           value={msg}
           size={200}
-          bgColor='blue'
+          bgColor='black'
           fgColor='white'/>
       </View>
     )
