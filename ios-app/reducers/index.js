@@ -9,6 +9,18 @@ import * as R from 'ramda'
 // import { merge } from 'ramda'
 // import { reducer as formReducer } from 'redux-form'
 
+const rehydrated = (state = false, action) => {
+  let { type } = action
+  switch (type) {
+    case A.REHYDRATION_COMPLETE: {
+      return true
+    }
+    default:
+      return state
+  }
+}
+
+
 const INIT = 0
 const counter = (state = INIT, action) => {
   let { type } = action
@@ -74,6 +86,7 @@ const credentials = (state = CREDENTIALS_INITIAL_STATE, action) => {
 // })
 
 const reducers = ({wpath, dpath}) => combineReducers({
+  rehydrated: rehydrated,
   counter: counter,
   loginState: login,
   credentials: credentials,

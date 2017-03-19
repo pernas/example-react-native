@@ -13,8 +13,10 @@ import { rootSaga } from '../sagas'
 const network = require('dream-wallet/lib/network')
 import * as C from '../config'
 
-import {persistStore, autoRehydrate} from 'redux-persist'
-import {AsyncStorage} from 'react-native'
+import { persistStore, autoRehydrate } from 'redux-persist'
+import { AsyncStorage } from 'react-native'
+import { completeRehydration } from '../actions'
+
 // persistStore(store, {storage: AsyncStorage})
 
 import createEncryptor from 'redux-persist-transform-encrypt';
@@ -50,7 +52,7 @@ const configureStore = () => {
                 whitelist: ['credentials'],
                 transforms: [encryptor]
               }
-              // , () => { console.warn('rehydration complete') }
+              , () => { store.dispatch(completeRehydration()) }
             // ).purge() // clean the stored state
             )
 

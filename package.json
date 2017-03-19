@@ -11,17 +11,23 @@
     "babel-preset-stage-2": "^6.22.0",
     "bitcoinjs-lib": "^2.3.0",
     "dream-wallet": "git+https://git@github.com/pernas/dream-wallet.git",
+    "immutable-ext": "^1.0.8",
     "node-libs-browser": "2.0.0",
     "ramda": "^0.23.0",
     "react": "15.4.2",
     "react-native": "0.42.0-rc.1",
+    "react-native-drawer": "^2.3.0",
+    "react-native-keyboard": "^2.0.0",
     "react-native-qrcode": "^0.2.3",
     "react-native-swiper": "^1.5.4",
+    "react-native-vector-icons": "^4.0.0",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
     "redux-persist": "^4.4.2",
     "redux-persist-transform-encrypt": "^1.0.1",
-    "redux-saga": "^0.14.3"
+    "redux-saga": "^0.14.3",
+    "reselect": "^2.5.4",
+    "satoshi-bitcoin": "^1.0.4"
   },
   "babel": {
     "presets": [

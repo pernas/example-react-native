@@ -14,6 +14,7 @@ export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const PERSIST_CREDENTIALS = 'PERSIST_CREDENTIALS'
+export const REHYDRATION_COMPLETE = 'REHYDRATION_COMPLETE'
 
 export const loginStart = credentials => ({ type: LOGIN_START, payload: credentials })
 export const loginSuccess = () => ({ type: LOGIN_SUCCESS })
@@ -30,3 +31,4 @@ export const switchPanel = panel => ({
 })
 
 export const persistCredentials = (payload) => ({ type: PERSIST_CREDENTIALS, payload })
+export const completeRehydration = () => ({ type: REHYDRATION_COMPLETE })

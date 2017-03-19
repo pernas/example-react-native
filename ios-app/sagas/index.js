@@ -4,6 +4,7 @@ import * as WalletSagas from 'dream-wallet/lib/sagas'
 import * as actions from '../actions'
 import * as walletActions from 'dream-wallet/lib/actions'
 import { getWalletContext, getXpubs } from 'dream-wallet/lib/selectors'
+import { merchantXpub } from '../selectors'
 
 export const rootSaga = ({ dpath, wpath, api } = {}) => {
 
@@ -22,11 +23,21 @@ export const rootSaga = ({ dpath, wpath, api } = {}) => {
     }
   }
 
+  const merchantWalletSaga = function* (action) {
+    const xpub = yield select(merchantXpub)
+    if( xpub !== '' && xpub !== null && xpub !== undefined) {
+      yield put(walletActions.requestWalletData(xpub))
+      // this should be handled by an infinite scroll
+      // yield put(walletActions.requestTxs(xpub))
+    }
+  }
+
   return function* () {
     yield [
       // here you can put an array of sagas in forks
       fork(WalletSagas.rootSaga({api, dpath, wpath}))
     ];
     yield takeEvery(actions.LOGIN_START, loginSaga)
+    yield takeEvery(actions.REHYDRATION_COMPLETE, merchantWalletSaga)
   }
 }
