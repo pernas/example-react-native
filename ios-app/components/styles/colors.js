@@ -6,5 +6,6 @@ export default {
   transparent: 'rgba(0,0,0,0)',
   sent: '#f26c57',
   received: '#0bbabc',
-  transferred: '#7b9eb1'
+  transferred: '#7b9eb1',
+  danger: '#ca3a3c'
 }
