@@ -10,6 +10,7 @@ import {
 // import stylesApp from './styles/styles'
 // import colors from './styles/colors'
 import * as actions from '../actions'
+import * as wActions from 'dream-wallet/lib/actions'
 import * as C from '../config'
 import { connect } from 'react-redux'
 import LoggedIn from './LoggedIn'
@@ -37,6 +38,13 @@ class Login extends Component {
     this.props.dispatch(actions.loginStart(credentials))
   }
 
+  create () {
+    const credentials = {
+      email: 'jaume@blockchain.com',
+      password: 'mypassword'
+    }
+    this.props.dispatch(wActions.newWallet(credentials))
+  }
 
 
   render () {
@@ -44,6 +52,7 @@ class Login extends Component {
       return (
         <View>
           <Button onPress={this.login.bind(this)} title='Login' />
+          <Button onPress={this.create.bind(this)} title='Create' />
         </View>
       )
     }

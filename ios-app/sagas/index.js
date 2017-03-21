@@ -31,6 +31,19 @@ export const rootSaga = ({ dpath, wpath, api } = {}) => {
       // yield put(walletActions.requestTxs(xpub))
     }
   }
+  const walletSignUpSaga = function* (action) {
+    const selectWallet = state => state[wpath]
+    const wallet = yield select(selectWallet)
+    const xpubs = getXpubs(wallet)
+    const credentials = {
+      xpub: xpubs.toJS()[0], // this maybe should be default or to be set by use
+      guid: wallet.get('walletImmutable').get('guid'),
+      sharedKey: wallet.get('walletImmutable').get('sharedKey'),
+      password: wallet.get('password')
+    }
+    yield put(actions.persistCredentials(credentials))
+    yield put(actions.loginSuccess())
+  }
 
   return function* () {
     yield [
@@ -39,5 +52,6 @@ export const rootSaga = ({ dpath, wpath, api } = {}) => {
     ];
     yield takeEvery(actions.LOGIN_START, loginSaga)
     yield takeEvery(actions.REHYDRATION_COMPLETE, merchantWalletSaga)
+    yield takeEvery(walletActions.WALLET_NEW_SUCCESS, walletSignUpSaga)
   }
 }

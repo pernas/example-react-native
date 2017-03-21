@@ -9,8 +9,8 @@ import { rootSaga } from '../sagas'
 // import persistState from 'redux-localstorage'
 // import Immutable from 'immutable-ext'
 // import { Socket } from 'dream-wallet/lib/network'
-// import { walletSyncMiddleware, walletSocketMiddleware } from 'dream-wallet/lib/middleware'
 const network = require('dream-wallet/lib/network')
+const middlewares = require('dream-wallet/lib/middleware')
 import * as C from '../config'
 
 import { persistStore, autoRehydrate } from 'redux-persist'
@@ -34,7 +34,7 @@ const configureStore = () => {
     compose(
       // persistState('session'),
       applyMiddleware(
-        // walletSyncMiddleware({ api: api, wpath: C.WALLET_IMMUTABLE_PATH}),
+        middlewares.walletSyncMiddleware({ api: api, wpath: C.WALLET_IMMUTABLE_PATH}),
         // walletSocketMiddleware({ socket }),
         sagaMiddleware
         // createLogger()
