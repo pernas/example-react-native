@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, StatusBar } from 'react-native'
 import { connect } from 'react-redux'
-import Counter from './Counter'
 import Login from './Login'
 import Merchant from './Merchant'
 import TransactionContainer from './TransactionContainer'
-import Swiper from 'react-native-swiper';
+import Swiper from 'react-native-swiper'
 import Header from './Header'
+import Request from './Request'
 
+console.disableYellowBox = true
 
 let styles = StyleSheet.create({
   wrapper: {
@@ -15,7 +16,7 @@ let styles = StyleSheet.create({
   text: {
     color: '#fff',
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   }
 })
 
@@ -29,23 +30,26 @@ const pairWallet =
   <View style={styles.wrapper}>
     {header}
     <Text> You must pair a wallet </Text>
-    <Login/>
+    <Login />
   </View>
 
 const swiper =
-  <View>
+  <View style={{flex: 1}}>
     {header}
+    {/*
     <Swiper style={styles.wrapper} showsButtons={false} loop={false} index={1}>
       <View style={{ flex: 1 }}>
-        <Login/>
+        <Login />
       </View>
       <View style={{ flex: 1 }}>
-        <Merchant/>
+        <Merchant />
       </View>
       <View style={{ flex: 1 }}>
         <TransactionContainer />
       </View>
     </Swiper>
+    */}
+    <Request />
   </View>
 
 class Main extends Component {
@@ -59,9 +63,8 @@ class Main extends Component {
 }
 
 const mapStateToProps = state => ({
-  credentials: state.credentials,
+  credentials: state.credentials
 })
-
 
 export default connect(
   mapStateToProps,

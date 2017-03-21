@@ -1,18 +1,38 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TextInput } from 'react-native'
+import { Text, StyleSheet, View, TextInput, Button } from 'react-native'
 import Keyboard from 'react-native-keyboard'
+import SlideUp from './SlideUp'
+import colors from './styles/colors'
 
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#f1f1f1'
+  },
+  top: {
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: '#f1f1f1',
+    justifyContent: 'center'
   },
   input: {
-    height: 40,
+    height: 60,
+    fontSize: 32,
+    width: '80%',
+    marginLeft: '10%',
     borderColor: 'gray',
-    borderWidth: 1
+    borderWidth: 1,
+    textAlign: 'center'
+  },
+  actionBar: {
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingRight: 12,
+    backgroundColor: colors.trueBlue
+  },
+  actionText: {
+    fontSize: 20
   }
 })
 
@@ -23,7 +43,7 @@ const takeDigits = (s, max) => s.split('').filter(isNum).slice(0, max).join('')
 class Request extends Component {
   constructor (props) {
     super(props)
-    this.state = { num: '' }
+    this.state = { num: '', isReceiving: false }
   }
 
   handleInput (text) {
@@ -33,15 +53,45 @@ class Request extends Component {
     this.setState({ num })
   }
 
+  handleDelete () {
+    this.handleInput(this.state.num.slice(0, -1))
+  }
+
+  handleKeyPress (key) {
+    this.handleInput(this.state.num + key)
+  }
+
   render () {
     return (
       <View style={styles.slide}>
-        <Text>Amount</Text>
-        <TextInput
-          style={styles.input}
-          value={this.state.num.toString()}
-          onChangeText={this.handleInput.bind(this)}
+        <View style={styles.top}>
+          <Text>Amount</Text>
+          <TextInput
+            style={styles.input}
+            value={this.state.num.toString()}
+          />
+        </View>
+        <View style={styles.actionBar}>
+          <Button
+            style={styles.actionText}
+            onPress={() => this.setState({ isReceiving: true })}
+            title='Charge'
+            color='white'
+          />
+        </View>
+        <Keyboard
+          keyboardType='decimal-pad'
+          onDelete={this.handleDelete.bind(this)}
+          onKeyPress={this.handleKeyPress.bind(this)}
         />
+        <SlideUp show={this.state.isReceiving} duration={800}>
+          <View style={styles.slide}>
+            <Button
+              onPress={() => this.setState({ isReceiving: false })}
+              title='Close'
+            />
+          </View>
+        </SlideUp>
       </View>
     )
   }
