@@ -13,6 +13,13 @@ console.disableYellowBox = true
 let styles = StyleSheet.create({
   wrapper: {
   },
+  swipeView: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 72
+  },
   text: {
     color: '#fff',
     fontSize: 30,
@@ -36,20 +43,20 @@ const pairWallet =
 const swiper =
   <View style={{flex: 1}}>
     {header}
-    {/*
-    <Swiper style={styles.wrapper} showsButtons={false} loop={false} index={1}>
-      <View style={{ flex: 1 }}>
+    <Swiper showsButtons={false} showsPagination={false} loop={false} index={3}>
+      <View style={styles.swipeView}>
         <Login />
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={styles.swipeView}>
         <Merchant />
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={styles.swipeView}>
         <TransactionContainer />
       </View>
+      <View style={styles.swipeView}>
+        <Request />
+      </View>
     </Swiper>
-    */}
-    <Request />
   </View>
 
 class Main extends Component {

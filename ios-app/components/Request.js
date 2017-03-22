@@ -7,12 +7,12 @@ import QrCode from 'react-native-qrcode'
 
 const styles = StyleSheet.create({
   slide: {
-    flex: 1,
-    backgroundColor: '#f1f1f1'
+    flex: 1
   },
   receive: {
     alignItems: 'center',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    backgroundColor: 'white'
   },
   top: {
     flex: 1,

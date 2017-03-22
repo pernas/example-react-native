@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import colors from './styles/colors'
-import IconButton from './IconButton'
 
 const styles = StyleSheet.create({
   nav: {
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
 
 class Header extends Component {
   render () {
-    let title = this.props.children
+    // let title = this.props.children
     return (
       <View style={styles.nav}>
         {/* <IconButton name='bars' size={24} onPress={this.props.onMenu} /> */}
