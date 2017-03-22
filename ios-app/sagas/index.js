@@ -1,5 +1,5 @@
 
-import {takeEvery, call, put, select, fork } from 'redux-saga/effects'
+import { takeEvery, call, put, select, fork } from 'redux-saga/effects'
 import * as WalletSagas from 'dream-wallet/lib/sagas'
 import * as actions from '../actions'
 import * as walletActions from 'dream-wallet/lib/actions'

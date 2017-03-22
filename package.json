@@ -34,5 +34,8 @@
       "es2015",
       "stage-2"
     ]
+  },
+  "devDependencies": {
+    "standard": "~9.0.2"
   }
 }
