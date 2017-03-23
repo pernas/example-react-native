@@ -43,14 +43,14 @@ const configureStore = () => {
     )
   )
 
-  const encryptor = createEncryptor({
-    secretKey: 'my-super-secret-key'
-  });
+  // const encryptor = createEncryptor({
+  //   secretKey: 'my-super-secret-key'
+  // });
 
   persistStore(store,
               { storage: AsyncStorage,
                 whitelist: ['credentials'],
-                transforms: [encryptor]
+                // transforms: [encryptor]
               }
               , () => { store.dispatch(completeRehydration()) }
             // ).purge() // clean the stored state

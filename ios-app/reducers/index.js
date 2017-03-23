@@ -40,7 +40,9 @@ const CREDENTIALS_INITIAL_STATE = {
   guid: null,
   sharedKey: null,
   password: null,
-  xpub: null
+  xpub: null,
+  pinEntry: null,
+  localKey: null
 }
 
 const credentials = (state = CREDENTIALS_INITIAL_STATE, action) => {

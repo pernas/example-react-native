@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Text, StyleSheet, View, StatusBar } from 'react-native'
 import { connect } from 'react-redux'
 import Login from './Login'
-import Merchant from './Merchant'
 import TransactionContainer from './TransactionContainer'
 import Swiper from 'react-native-swiper'
 import Header from './Header'
@@ -43,18 +42,15 @@ const pairWallet =
 const swiper =
   <View style={{flex: 1}}>
     {header}
-    <Swiper showsButtons={false} showsPagination={false} loop={false} index={3}>
+    <Swiper showsButtons={false} showsPagination={false} loop={false} index={1}>
       <View style={styles.swipeView}>
         <Login />
       </View>
       <View style={styles.swipeView}>
-        <Merchant />
+        <Request />
       </View>
       <View style={styles.swipeView}>
         <TransactionContainer />
-      </View>
-      <View style={styles.swipeView}>
-        <Request />
       </View>
     </Swiper>
   </View>
